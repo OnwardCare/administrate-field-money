@@ -13,6 +13,7 @@ module Administrate
       end
 
       def to_s
+        data.blank? ? "" :
         money.format(symbol: symbol, separator: separator, delimiter: delimiter)
       end
 

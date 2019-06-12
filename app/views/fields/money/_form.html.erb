@@ -17,9 +17,10 @@ that gets submitted with the form.
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= text_field_tag field.attribute, field.data,
+  <%= text_field_tag field.attribute, field.data.present? ? field.data / 100 : field.data,
       data: {
         maskmoney: true,
+        "allow-empty": true,
         thousands: field.delimiter,
         decimal: field.separator,
         prefix: field.symbol } %>

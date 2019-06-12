@@ -2,20 +2,19 @@
 
 $(function() {
   var getUnmaskedMoneyCents,
-      updateSiblingHiddenFieldValueOf,
-      syncUnmaskedValueWithHiddenField,
-      $applyMaskMoneyTo,
-      setupMaskMoney,
-      EVENTS_TO_SYNC = 'change keyup paste';
+    updateSiblingHiddenFieldValueOf,
+    syncUnmaskedValueWithHiddenField,
+    $applyMaskMoneyTo,
+    setupMaskMoney,
+    EVENTS_TO_SYNC = "change keyup paste";
 
   getUnmaskedMoneyCents = function($el) {
-    return $el.maskMoney('unmasked')[0] * 100;
+    var unmasked = $el.maskMoney("unmasked")[0];
+    return unmasked ? unmasked * 100 : null;
   };
 
   updateSiblingHiddenFieldValueOf = function($el, getNewValue) {
-    $el.siblings('[type="hidden"]').val(
-      getNewValue($el)
-    );
+    $el.siblings('[type="hidden"]').val(getNewValue($el));
   };
 
   syncUnmaskedValueWithHiddenField = function() {
@@ -23,16 +22,17 @@ $(function() {
   };
 
   $applyMaskMoneyTo = function(el) {
-    return $(el).maskMoney().trigger('mask');
+    return $(el)
+      .maskMoney()
+      .trigger("mask");
   };
 
   setupMaskMoney = function() {
-    $applyMaskMoneyTo(this)
-      .on(
-        EVENTS_TO_SYNC,
-        syncUnmaskedValueWithHiddenField
-      );
+    $applyMaskMoneyTo(this).on(
+      EVENTS_TO_SYNC,
+      syncUnmaskedValueWithHiddenField
+    );
   };
 
-  $('[data-maskmoney]').each(setupMaskMoney);
+  $("[data-maskmoney]").each(setupMaskMoney);
 });
