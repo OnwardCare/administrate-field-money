@@ -10,7 +10,7 @@ $(function() {
 
   getUnmaskedMoneyCents = function($el) {
     var unmasked = $el.maskMoney("unmasked")[0];
-    return unmasked ? unmasked * 100 : null;
+    return unmasked ? Math.round(unmasked * 100 * 1e2) / 1e2 : null;
   };
 
   updateSiblingHiddenFieldValueOf = function($el, getNewValue) {
