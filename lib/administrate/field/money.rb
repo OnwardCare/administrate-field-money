@@ -39,6 +39,10 @@ module Administrate
       def separator
         options.fetch(:separator, currency.decimal_mark)
       end
+
+      def allow_empty
+        options.fetch(:allow_empty, true)
+      end
     end
   end
 end
