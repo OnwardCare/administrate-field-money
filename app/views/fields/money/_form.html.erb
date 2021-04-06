@@ -20,7 +20,7 @@ that gets submitted with the form.
   <%= text_field_tag field.attribute, field.data.present? ? field.data / 100.0 : field.data,
       data: {
         maskmoney: true,
-        "allow-empty": field.allow_empty,
+        allowEmpty: field.allow_empty,
         thousands: field.delimiter,
         decimal: field.separator,
         prefix: field.symbol } %>
